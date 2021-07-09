@@ -1,0 +1,131 @@
+[
+    {
+        "username": "Admin",
+        "password": "admin"
+    },
+    {
+        "firstName": "roni",
+        "lastName": "lahav",
+        "createDate": "2021-07-04",
+        "session": "98",
+        "id": "60e197db45174507445fc781"
+    },
+    {
+        "firstName": "adi",
+        "lastName": "cohen",
+        "createDate": "2021-07-04",
+        "session": "67",
+        "id": "60e1993f640bf514e8687b2a"
+    },
+    {
+        "firstName": "moshe",
+        "lastName": "cohen",
+        "createDate": "2021-07-04",
+        "session": "123",
+        "id": "60e19a814466c33d50a72e8e"
+    },
+    {
+        "firstName": "beni",
+        "lastName": "ben",
+        "createDate": "2021-07-04",
+        "session": "56",
+        "id": "60e19af917848728b8908f51"
+    },
+    {
+        "firstName": "sadam",
+        "lastName": "husain",
+        "createDate": "2021-07-04",
+        "session": "765",
+        "id": "60e19b7f6a1f4f3d545cca3f"
+    },
+    {
+        "firstName": "moty",
+        "lastName": "eloch",
+        "createDate": "2021-07-05",
+        "session": "56",
+        "permissions": [
+            null
+        ],
+        "id": "60e2e8b15c7b431f4c066552"
+    },
+    {
+        "firstName": "yoni",
+        "lastName": "yon",
+        "createDate": "2021-07-05",
+        "session": "123",
+        "permissions": [
+            null
+        ],
+        "id": "60e2e90d0c431133f4a4fd34"
+    },
+    {
+        "firstName": "rom",
+        "lastName": "rami",
+        "createDate": "2021-07-05",
+        "session": "89",
+        "id": "60e2ebf0a0edbd3db09e1764"
+    },
+    {
+        "firstName": "tami",
+        "lastName": "tamir",
+        "createDate": "2021-07-05",
+        "session": "90",
+        "id": "60e2ec2f46bae107b461e2a9"
+    },
+    {
+        "firstName": "tom",
+        "lastName": "levi",
+        "createDate": "2021-07-05",
+        "session": "52",
+        "id": "60e31a794adab929447f5110"
+    },
+    {
+        "firstName": "tom",
+        "lastName": "levi",
+        "createDate": "2021-07-05",
+        "session": "52",
+        "id": "60e31a7c59b0e04fac7a041f"
+    },
+    {
+        "firstName": "tom",
+        "lastName": "levi",
+        "createDate": "2021-07-05",
+        "session": "34",
+        "id": "60e31b61f93df92f8077f192"
+    },
+    {
+        "firstName": "tom",
+        "lastName": "levi",
+        "createDate": "2021-07-05",
+        "session": "34",
+        "id": "60e31ba47d3fe351800d8997"
+    },
+    {
+        "firstName": "tom",
+        "lastName": "levi",
+        "createDate": "2021-07-05",
+        "session": "56",
+        "id": "60e31bcb335c992ce4f7daeb"
+    },
+    {
+        "firstName": "moty",
+        "lastName": "tovel",
+        "createDate": "2021-07-05",
+        "session": "123",
+        "id": "60e31fd9d0f39d10acdae663"
+    },
+    {
+        "firstName": "rotem",
+        "lastName": "avner",
+        "createDate": "2021-07-06",
+        "session": "89",
+        "id": "60e44f0f4347893f00c7895a"
+    },
+    {
+        "firstName": "yael",
+        "lastName": "lopaz",
+        "createDate": "2021-07-06",
+        "session": "90",
+        "id": "60e44fda8cd65b419c8dbc53"
+    }
+]

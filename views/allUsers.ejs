@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+   
+    <body>    
+              
+        <div>
+        <% users.forEach(function(user) { %>
+            <br/>
+            <div style="border:1px solid black;">
+         Name: <%= user.name %>  <br/>
+         User Name : <%= user.username %> <br/>
+         Session Time Out : <%= user.session %> <br/>
+         Create Data : <%= user.createDate %> <br/>
+         Permissions : <%= user.permissions %><br/><br/>
+         <input type="submit" name="action" value="Edit" >
+         <input type="submit" name="action" value="Delete">
+             
+            <div>
+                <br/>
+   
+           <% }) %>
+        </div>
+       
+   
+
+
+
+    </body>
+</html>
