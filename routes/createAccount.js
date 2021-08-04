@@ -10,9 +10,7 @@ router.get('/', async function (req, res, next) {
 
 router.post('/user', async function (req, res, next) {
     let username = req.body.username;
-    console.log(username);
     let user = await userBL.getUserFromDB(username);
-    console.log(user);
     if (user.length > 0) {
         let obj = req.body;
         await userBL.addUserPassword(username, obj.password);

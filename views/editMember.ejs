@@ -1,0 +1,20 @@
+<html>
+
+<body>
+    <h1>Members</h1></br>
+    <h2>Edit Member : <%= member.Name %>
+    </h2>
+    <form action="/editMember/update/<%= member._id %>" method="POST">
+        Name: <input type="text" name="Name" value="<%= member.Name %>"></br> </br>
+        Email: <input type="email" name="Email" value="<%= member.Email %>"></br></br>
+        City : <input type="text" name="City" value="<%= member.City %>"></br></br>
+
+        <input type="submit" name="action" value="Update">
+        <input type="submit" name="action" value="Cancel">
+
+
+    </form>
+
+    <body>
+
+</html>

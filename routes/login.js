@@ -18,7 +18,7 @@ router.post('/userdata', async function (req, res, next) {
                 req.session.admin = true;
             }
             else {
-                req.session.idd = isValid.id;
+                req.session.userId = isValid.id;
             }
             res.redirect('/mainPage');
         } else {

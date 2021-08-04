@@ -12,35 +12,36 @@ router.get('/', async function (req, res, next) {
         let usersJson = await usersDAL.getUsersFromJson();
         let permissionsJson = await permissionsDAL.getPermissionsFromJson();
         let users = [];
-        usersDB.forEach(userDb => { 
-            if(userDb.username !== "Admin"){
+        usersDB.forEach(userDb => {
+            if (userDb.username !== "Admin") {
                 const userJson = usersJson.find(user => user.id == userDb._id);
                 const permissionJson = permissionsJson.find(user => user.id == userDb._id);
                 const result = {
                     name: userJson?.firstName + " " + userJson?.lastName,
+                    id: userJson?.id,
                     // username: userDb.username || "",
-                    username: userDb.username ? userDb.username : "",
-                    session : userJson?.session ? userJson.session : "" ,
-                    createDate :userJson?.createDate ? userJson.createDate : "",
-                    permissions : permissionJson?.permissions ? permissionJson.permissions : ""
+                    username: userDb?.username ? userDb.username : "",
+                    session: userJson?.session ? userJson.session : "",
+                    createDate: userJson?.createDate ? userJson.createDate : "",
+                    permissions: permissionJson?.permissions ? permissionJson.permissions : ""
 
                 }
                 users.push(result);
-            } 
+            }
         });
         let action = req.body.action;
-        if(action == "Edit"){
+        if (action == "Edit") {
             res.redirect("/editUser");
-        }else if(action == "Delete"){
+        } else if (action == "Delete") {
             usersDB.forEach(userDb => {
-               const userFromJson = usersJson.find(user => user.id == userDb._id);
+                const userFromJson = usersJson.find(user => user.id == userDb._id);
             })
             await usersBL.deleteUserFromDB(userDb.username);
             await userBL.deleteUserFromJson(userFromJson.id);
             res.redirect("/allUsers")
         }
         res.render('allUsers', { users: users });
-     }
+    }
     else {
         res.redirect("/login")
     }

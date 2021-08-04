@@ -1,21 +1,33 @@
 <html>
-   
-    <body>    
-        <h1>All Movies Page </h1>
-        <h3> Welcome <%= username %> <br></h3>   
-        <div>
-        <% movies.forEach(function(movie) { %>
-            <br/>
-            <div style="border:1px solid black;">
-        <h3> <%= movie.Name %> , <%= movie.Premiered %></h3> 
-        <span style="border: 1px;"> Genres : <%= movie.Genres %> </span><br/>  
-        </br> <img width="200" height="300" src=<%=movie.Image ? movie.Image : "" %> /><br/><br/>
 
-        <% if(permission) { %>
-            <input type="submit" name="action" value="Edit" >
-            <input type="submit" name="action" value="Delete">
-            <% } %>
-            <% }) %>
+<body>
+    <h1>All Movies Page </h1>
+    <h3> Welcome <%= username %> <br></h3>
+    <% movies.forEach(function(movie) { %>
+        <br />
+        <div style="border:1px solid black;">
+            <h3>
+                <%= movie.Name %> , <%= movie.Premiered.slice(0, 4) %>
+            </h3>
+            <span style="border: 1px;"> Genres : <%= movie.Genres %> </span><br />
+            </br> <img width="200" height="300" src=<%=movie.Image ? movie.Image : "" %> /><br /><br />
 
-    </body>
+            <% if(perUpdate) { %>
+                <form action="/editMovie/<%= movie._id %>">
+                    <input type="submit" value="Edit" />
+                </form><br />
+                <% } %>
+                    <% if(perDelete) { %>
+                        <form action="/editMovie/delete/<%= movie._id %>">
+                            <input type="submit" value="Delete" />
+                        </form>
+                        <% } %>
+        </div>
+        <% }) %>
+
+
+
+
+</body>
+
 </html>

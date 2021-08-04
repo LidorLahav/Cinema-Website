@@ -1,0 +1,19 @@
+<html>
+
+<body>
+    <h1>Movies Data Page </h1>
+
+    Id: <%= movie._id %> <br />
+        Name: <%= movie.Name %> <br />
+            Genres: <% movie.Genres.forEach(genre=> {%>
+                <%= genre%>
+                    </br>
+                    <% }) %> </br>
+                    Premiered: <%= movie.Premiered.slice(0, 4) %> <br /> <br />
+                            </br> <img src=<%=movie.Image %> />
+                            <br /> <br />
+
+                           
+</body>
+
+</html>

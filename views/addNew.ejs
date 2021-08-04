@@ -1,0 +1,48 @@
+
+<select name="movies" id="movies">
+    <% movies.forEach(movie => subscription.Movies.map(m => m.movieId).includes(movie._id) ?  %>
+                        <option value="<%= movie.movieName %>"><%= movie.movieName %></option>
+                      <% : null ) %>  
+                    </select> 
+
+
+
+
+
+<% movies.forEach(movie => {if(!subscriptions.find(sub => sub.MemberId === member._id).Movies?.map(m => m.movieId).includes(movie._id)) { %>
+  <option value="<%= movie.Name %>"><%= movie.Name %></option>
+  <% } else {console.log("123");}}) %>
+
+
+
+
+
+  <% movies.filter(movie => !subscriptions.filter(sub => sub.MemberId === member._id).Movies?.map(m => m.movieId).includes(movie._id)).forEach(movie => { %>
+    <option value="<%= movie.Name %>"><%= movie.Name %></option>
+    <% }) %>
+
+    <script src="../routes/allMembers.js">
+      const addMovie = (event) => {
+          const id = event.target.id;
+          const div = document.getElementById('div' + id);
+          if (div.style.display === "block"){
+              div.style.display = "none";
+              div.style.visibility = "hidden";
+          } else {
+              div.style.display = "block";
+              div.style.visibility = "visible";
+          }
+      }
+  // const sendMovie = (event) => {
+  //     const id = event.target.id;
+  //     const select = document.getElementById('select' + id);
+  //     const movieId = select.value;
+  //     const movieName = movie.Name;
+  // }
+   </script>
+
+<form action="/allMembers/newMember/<%= member._id %>">
+  <input type="submit" value="Subscribe" />
+</form><br />
+
+action="/allMembers/newMember/<%= member._id %>"

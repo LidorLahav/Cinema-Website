@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var loginController = require('./routes/login');
+var logoutController = require('./routes/logout');
 var createAccountController = require('./routes/createAccount');
 var mainPageController = require('./routes/mainPage');
 var usersManagementPageController = require('./routes/usersManagementPage');
@@ -14,6 +15,12 @@ var addUserController = require('./routes/addUser');
 var editUserController = require('./routes/editUser');
 var moviePageController = require('./routes/moviesPage');
 var allMoviesController = require('./routes/allMovies');
+var editMovieController = require('./routes/editMovie');
+var addMovieController = require('./routes/addMovie');
+var addMemberController = require('./routes/addMember');
+var subscriptionsPageController = require('./routes/subscriptionsPage');
+var allMembersController = require('./routes/allMembers');
+var editMemberController = require('./routes/editMember');
 // var addMovieController = require('./routes/addMovie');
 
 
@@ -42,14 +49,22 @@ require('./configs/database');
 
 app.use('/', indexRouter);
 app.use('/login', loginController);
+app.use('/logout',logoutController);
 app.use('/createAccount', createAccountController);
 app.use('/mainPage', mainPageController);
 app.use('/usersManagementPage', usersManagementPageController);
 app.use('/allUsers', allUsersController);
 app.use('/addUser', addUserController);
-app.use('/editUser' ,editUserController);
-app.use('/moviesPage',moviePageController);
-app.use('/allMovies' ,allMoviesController);
+app.use('/editUser', editUserController);
+app.use('/moviesPage', moviePageController);
+app.use('/allMovies', allMoviesController);
+app.use('/editMovie', editMovieController);
+app.use('/addMovie', addMovieController);
+app.use('/addMember', addMemberController);
+app.use('/subscriptionsPage', subscriptionsPageController);
+app.use('/allMembers', allMembersController);
+app.use('/editMember', editMemberController);
+
 // app.use('/addMovie' ,addMovieController);
 
 // catch 404 and forward to error handler

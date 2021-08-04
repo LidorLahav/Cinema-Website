@@ -2,41 +2,82 @@
 
 <body>
     <h1>Edit User</h1>
-    <form action="/editUser/update" method="POST">
-        First Name: <input type="text" name="firstName" value="<%= user.firstName" ></br> </br>
-        Last Name: <input type="text" name="lastName" value="<%= user.lastName"></br></br>
-        UserName : <input type="text" name="username" value="<%= user.username"></br></br>
+    <form action="/editUser/update/<%= user.id %>" method="POST">
+        First Name: <input type="text" name="firstName" value="<%= user.firstName %>"></br> </br>
+        Last Name: <input type="text" name="lastName" value="<%= user.lastName %>"></br></br>
+        UserName : <input type="text" name="username" value="<%= user.username %>"></br></br>
         Created data: <%= today %> </br></br>
-        Session Time Out : <input type="text" name="session" value="<%= user.session"></br></br>
-        Permissions :<br />
-        <ul>
-            <li>
-                View Subscriptions <input type="checkbox" name="permissions" value="View Subscriptions"><br>
-            </li>
-            <li>
-                Create Subscriptions <input type="checkbox" name="permissions" value="Create Subscriptions"><br>
-            </li>
-            <li>
-                Delete Subscriptions <input type="checkbox" name="permissions" value="Delete Subscriptions"><br>
-            </li>
-            <li>
-                Update Subscriptions <input type="checkbox" name="permissions" value="Update Subscriptions"><br>
-            </li>
-            <li>
-                View Movies <input type="checkbox" name="permissions" value="View Movies"><br>
-            </li>
-            <li>
-                Create Movies <input type="checkbox" name="permissions" value="Create Movies"><br>
-            </li>
-            <li>
-                Delete Movies <input type="checkbox" name="permissions" value="Delete Movies"><br>
-            </li>
-            <li>
-                Update Movies <input type="checkbox" name="permissions" value="Update Movies"><br>
-            </li>
-        </ul> <br/>
-        <input type="submit" name="action" value="Update" >
-        <input type="submit" name="action" value="Cancel">
-      
-        
+            Session Time Out : <input type="text" name="session" value="<%= user.session %>"></br></br>
+            Permissions :<br />
+            <ul>
+                <li>
+                    View Subscriptions
+                    <% if(user.permissions.includes("View Subscriptions")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="View Subscriptions"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="View Subscriptions"><br>
+                            <% } %>
+
+                </li>
+                <li>
+                    Create Subscriptions
+                    <% if(user.permissions.includes("Create Subscriptions")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="Create Subscriptions"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="Create Subscriptions"><br>
+                            <% } %>
+                </li>
+                <li>
+                    Delete Subscriptions
+                    <% if(user.permissions.includes("Create Subscriptions")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="Delete Subscriptions"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="Delete Subscriptions"><br>
+                            <% } %>
+                </li>
+                <li>
+                    Update Subscriptions
+                    <% if(user.permissions.includes("Update Subscriptions")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="Update Subscriptions"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="Update Subscriptions"><br>
+                            <% } %>
+                </li>
+                <li>
+                    View Movies
+                    <% if(user.permissions.includes("View Movies")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="View Movies"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="View Movies"><br>
+                            <% } %>
+                </li>
+                <li>
+                    Create Movies
+                    <% if(user.permissions.includes("Create Movies")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="Create Movies"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="Create Movies"><br>
+                            <% } %>
+                </li>
+                <li>
+                    Delete Movies
+                    <% if(user.permissions.includes("Delete Movies")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="Delete Movies"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="Delete Movies"><br>
+                            <% } %>
+                </li>
+                <li>
+                    Update Movies
+                    <% if(user.permissions.includes("Update Movies")){ %>
+                        <input type="checkbox" name="permissions" checked="true" value="Update Movies"><br>
+                        <% } else { %>
+                            <input type="checkbox" name="permissions" value="Update Movies"><br>
+                            <% } %>
+                </li>
+            </ul> <br />
+            <input type="submit" name="action" value="Update">
+            <input type="submit" name="action" value="Cancel">
+
+
     </form>

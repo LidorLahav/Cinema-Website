@@ -1,0 +1,84 @@
+<html>
+    <script>
+        const addMovie = (event) => {
+            const id = event.target.id;
+            const div = document.getElementById('div' + id);
+            if (div.style.display === "block"){
+                div.style.display = "none";
+                div.style.visibility = "hidden";
+            } else {
+                div.style.display = "block";
+                div.style.visibility = "visible";
+            }
+        }
+
+        const sendMovie = (event) => {
+            const id = event.target.id.slice(1);
+            const select = document.getElementById('select' + id);
+            const movieId = select.value;
+            const movieName = select.options[select.selectedIndex].text;
+            const input = document.getElementById('date' + id);
+            const date = input.value;     
+        }
+     </script>
+
+<body>
+    <h1>All Members Page </h1>
+    <h3> Welcome <%= username %> <br></h3>
+    <% members.forEach(function(member, index) { %>
+        <br />
+        <div style="border:1px solid black;">
+            <h3>
+                <%= member.Name %>
+                
+            </h3>
+            <span style="border: 1px;">
+                Email : <%= member.Email %> <br />
+                    City : <%= member.City %>
+            </span><br />
+            <% if(perUpdate) { %>
+                <form action="/editMember/<%= member._id %>">
+                    <input type="submit" value="Edit" />
+                </form><br />
+                <% } %>
+                    <% if(perDelete) { %>
+                        <form action="/editMember/delete/<%= member._id %>">
+                            <input type="submit" value="Delete" />
+                        </form>
+                        <% } %>
+                            <div style="border:1px solid black;">
+                                <h3>
+                                    Movies watched
+                                </h3>
+                                <input type="submit" id="<%= index %>" onclick="addMovie(event)" value="Subscribe to new movie" >
+                                    <div id="div<%= index %>" style="display: none; visibility: hidden; border:1px solid black;" >
+                                        <h4>Add a new movie</h4>
+                                            <select name="movies" id="select<%= index %>">
+                                            <% movies.filter(movie => !subscriptions.find(sub => sub.MemberId === member._id)?.Movies.map(m => m.movieId).includes(movie._id)).forEach(movie => { %>
+                                                <option value="<%= movie._id %>" class="<%= movie.Name %>"><%= movie.Name %></option>
+                                                <% }) %>
+                                        </select> 
+                                        <input type="text" id="date<%= index %>"  value="<%= today %> ">
+                                        <br/><br/>
+                                            <input type="submit" value="Subscribe" onclick="sendMovie(event)" id="b<%= index %>"/>
+                                        <br />
+                                 </div>
+                                <ul>
+                                    <% subscriptions.find(sub=> sub.MemberId === member._id)?.Movies.forEach(function(movie) { %>
+                                        <li>
+                                            <a href="/allMembers/<%= movie.movieId %>">
+                                                <%= movie.movieName %>
+                                            </a>, <%= movie.date.slice(0, 10) %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+
+                            </div>
+        </div>
+        <% }) %>
+
+</body>
+
+ 
+
+</html>

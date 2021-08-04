@@ -1,0 +1,19 @@
+<html>
+
+<body>
+    <h1>Add New Member</h1>
+    <h3> Welcome <%= username %> <br></h3>
+    <form action="/addMember/newMember" method="POST">
+        Name: <input type="text" name="Name"></br> </br>
+        Email: <input type="email" name="Email"></br></br>
+        City : <input type="text" name="City"></br></br>
+
+
+        <input type="submit" name="action" value="Save">
+        <input type="submit" name="action" value="Cancel">
+
+    </form>
+
+</body>
+
+</html>

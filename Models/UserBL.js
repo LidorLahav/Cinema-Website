@@ -17,12 +17,9 @@ const getAllUsersFromDB = function () {
 
 }
 const addUSerToJson = async function (user) {
-
     let users = await usersDAL.getUsersFromJson();
-    let obj = { firstName: user.firstName, lastName: user.lastName, createDate: today, session: user.session, permissions: user.permissions, id: user.id};
-    users.push(obj);
+    users.push(user);
     await usersDAL.writeFile(users);
-
 }
 
 const addUserToDB = function (username) {
@@ -73,75 +70,73 @@ const addUserPassword = function (username, password) {
     })
 }
 
-const deleteUserFromDB = function(username)
-{
-    return new Promise((resolve, reject) =>
-    {
-        User.findOneAndDelete({ username: username }, function(err)
-       {
-        if(err)
-        {
-            reject(err)
-        }
-        else
-        {
-            resolve('Deleted');
-        }
-       })
+const deleteUserFromDB = function (username) {
+    return new Promise((resolve, reject) => {
+        User.findOneAndDelete({ username: username }, function (err) {
+            if (err) {
+                reject(err)
+            }
+            else {
+                resolve('Deleted');
+            }
+        })
     })
 }
 const deleteUserFromJson = async function (id) {
 
     let users = await usersDAL.getUsersFromJson();
     let index = users.map(x => x.id).indexOf(id);
-    users.splice(index)
+    users.splice(index, 1);
     let result = await usersDAL.writeFile(users);
 
     return result;
 }
 
-const getUserFromDBbyId = function(id)
-{
-    return new Promise((resolve, reject) =>
-    {
-        User.findById( id, function(err, data)
-        {
-            if(err)
-            {
+const getUserFromDBbyId = function (id) {
+    return new Promise((resolve, reject) => {
+        User.findById(id, function (err, data) {
+            if (err) {
                 reject(err);
             }
-            else
-            {
+            else {
                 resolve(data);
             }
         })
     });
 }
 
-const updateUserDB = function(id,username)
-{
-    return new Promise((resolve, reject) =>
-    {
-       Person.findByIdAndUpdate(id, 
-        {
-            username : username,
-            
-        } , function(err)
-        {
-            if(err)
+const updateUserDB = function (id, username) {
+    return new Promise((resolve, reject) => {
+        User.findByIdAndUpdate(id,
             {
-                reject(err)
-            }
-            else
-            {
-                resolve('Updated');
-            }
-        })
+                username: username,
+
+            }, function (err) {
+                if (err) {
+                    reject(err)
+                }
+                else {
+                    resolve('Updated');
+                }
+            })
     })
 }
-const updateUserJson = async function (id, obj) {
-    await this.deleteUserFromJson(id);
-    await this.addUSerToJson(obj);
+// const updateUserJson = async function (id, user) {
+//     await this.deleteUserFromJson(id);
+//     await this.addUSerToJson(user);
+// }
+const updateUserJson = async function (id, user) {
+    let users = await usersDAL.getUsersFromJson();
+    let index = users.map(x => x.id).indexOf(id);
+    users.splice(index, 1);
+    users.push(user);
+    await usersDAL.writeFile(users);
+
+}
+const getUserByIdFromJson = async function (id) {
+    let usersJson = await usersDAL.getUsersFromJson();
+    const userJson = usersJson.find(u => u.id === id);
+    return userJson;
 }
 
-module.exports = { getAllUsersFromDB, getUserFromDB, addUserPassword, addUSerToJson, addUserToDB ,deleteUserFromDB ,getUserFromDBbyId ,deleteUserFromJson ,updateUserDB ,updateUserJson};
+module.exports = { getAllUsersFromDB, getUserFromDB, addUserPassword, addUSerToJson, addUserToDB, deleteUserFromDB, getUserFromDBbyId, deleteUserFromJson, updateUserDB, updateUserJson, getUserByIdFromJson };

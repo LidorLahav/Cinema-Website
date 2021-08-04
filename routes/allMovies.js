@@ -6,20 +6,23 @@ const permissionsDAL = require('../DAL/permissionsDAL');
 router.get('/', async function (req, res, next) {
     const permissions = await permissionsDAL.getPermissionsFromJson();
     let permission = true;
+    let userPermissions;
     if (!req.session.admin) {
-        console.log(req.session);
-        permission = permissions.find(p => p.id === req.session.idd).find(x => x === "View Movies");
+        userPermissions = permissions.find(p => p.id === req.session.userId);
+        permission = userPermissions?.permissions.includes("View Movies");
     }
     if (req.session.authenticated && permission) {
         let movies = await moviesBL.getAllMovies();
         if (!req.session.admin) {
-            const per = permissions.find(p => p.id === req.session.idd).find(x => x === "Update Movies") && permissions.find(p => p.id === req.session.idd).find(x => x === "Delete Movies");
-            res.render('allMovies', { movies: movies, username: req.session.username, permission: per });
+            const perUpdate = userPermissions?.permissions.includes("Update Movies");
+            const perDelete = userPermissions?.permissions.includes("Delete Movies");
+            res.render('allMovies', { movies: movies, username: req.session.username, perUpdate: perUpdate, perDelete: perDelete });
         }
-        res.render('allMovies', { movies: movies, username: req.session.username, permission: true });
+        res.render('allMovies', { movies: movies, username: req.session.username, perUpdate: true, perDelete: true });
     }
     else {
-        res.redirect("/login")
+        res.render("moviesPage", { username: req.session.username, msg: 'you do not have the right permission! ' });
+
     }
 });
 
